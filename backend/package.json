@@ -1,9 +1,10 @@
 {
   "name": "food-ordering-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
+    "build": "npm install --prefix ../frontend && npm run build --prefix ../frontend",
     "dev": "node --env-file-if-exists=.env --watch server.js",
     "start": "node --env-file-if-exists=.env server.js"
   },
