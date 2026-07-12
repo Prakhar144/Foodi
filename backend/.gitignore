@@ -1,2 +1,38 @@
-.env
+# Dependencies
 node_modules/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Build output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Runtime data & uploads
+uploads/
+*.pid
+
+# Test & coverage
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+.parcel-cache/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Lock files (keep package-lock.json, ignore yarn.lock if not used)
+yarn.lock
+pnpm-lock.yaml

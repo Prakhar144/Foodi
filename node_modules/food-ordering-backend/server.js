@@ -1,8 +1,9 @@
 import 'dotenv/config';
-import app from './app.js';
-import { pool } from './config/db.js';
+import app from './src/app.js';
+import { pool } from './src/config/db.js';
+import { config } from './src/config/config.js';
 
-const PORT = process.env.PORT || 5000;
+const PORT = config.port;
 
 const logDatabaseError = (error) => {
   console.error('MySQL connection failed:', {
