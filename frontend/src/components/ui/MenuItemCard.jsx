@@ -5,26 +5,34 @@ const MenuItemCard = ({ item }) => {
   const { addToCart } = useCart();
 
   return (
-    <article id={`menu-item-${item.id}`} className="overflow-hidden rounded-2xl bg-white shadow-sm">
-      <img
-        src={item.image}
-        alt={item.name}
-        className="h-44 w-full object-cover"
-        loading="lazy"
-      />
-      <div className="p-5">
-        <span className="rounded bg-orange-50 px-2 py-1 text-xs font-bold text-orange-600">
-          {item.category}
-        </span>
-        <h3 className="mt-3 text-lg font-black">{item.name}</h3>
-        <div className="mt-5 flex items-center justify-between">
-          <strong>{formatCurrency(item.price)}</strong>
+    <article id={`menu-item-${item.id}`} className="premium-card group flex h-full flex-col">
+      <div className="relative h-56 overflow-hidden">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.05]"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0.18)_46%,rgba(0,0,0,0.78)_100%)]" />
+        <div className="absolute left-4 top-4">
+          <span className="premium-chip border-emerald-300/15 bg-black/35 text-emerald-100">
+            {item.category}
+          </span>
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="text-xl font-semibold tracking-tight text-white">{item.name}</h3>
+        <p className="mt-2 text-sm leading-6 text-white/60">
+          Premium plated, photo-forward, and ready for instant checkout.
+        </p>
+        <div className="mt-6 flex items-center justify-between gap-3 pt-4">
+          <strong className="text-lg text-white">{formatCurrency(item.price)}</strong>
           <button
             id={`add-to-cart-${item.id}`}
             onClick={() => addToCart(item)}
-            className="rounded-xl bg-gray-900 px-4 py-2 text-sm font-bold text-white hover:bg-orange-600"
+            className="premium-button px-4 py-3 text-sm"
           >
-            Add
+            Add to cart
           </button>
         </div>
       </div>

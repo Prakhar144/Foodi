@@ -7,26 +7,32 @@ const Navbar = ({ onOpenCart, onOpenAuth }) => {
   const { itemCount } = useCart();
 
   return (
-    <nav className="sticky top-0 z-40 flex items-center justify-between bg-white px-4 py-3 shadow-sm md:px-8">
+    <nav className="sticky top-0 z-40 border-b border-white/8 bg-[#070708]/80 px-4 py-3 backdrop-blur-2xl md:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
       <button
         id="nav-logo"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="text-2xl font-black tracking-tight text-orange-600"
+        className="flex items-center gap-3 text-xl font-bold tracking-tight text-white sm:text-2xl"
       >
-        Foodie
+        <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-amber-300 via-amber-500 to-orange-500 text-base font-black text-black shadow-[0_12px_28px_rgba(212,175,55,0.28)]">
+          F
+        </span>
+        <span className="font-['Sora'] tracking-tight">
+          Foodie <span className="text-amber-300">Lux</span>
+        </span>
       </button>
 
       <div className="flex items-center gap-3">
         {user ? (
           <>
-            <span className="hidden text-sm font-semibold text-gray-600 sm:block">
+            <span className="hidden rounded-full border border-white/8 bg-white/5 px-3 py-2 text-sm font-medium text-white/65 sm:block">
               Hi, {user.name}
             </span>
             <button
               id="nav-logout"
               onClick={logout}
               title="Log out"
-              className="rounded-lg p-2 text-gray-600 hover:bg-gray-100"
+              className="rounded-xl border border-white/8 bg-white/5 p-2.5 text-white/70 transition hover:bg-white/10 hover:text-white"
             >
               <LogOut size={20} />
             </button>
@@ -35,7 +41,7 @@ const Navbar = ({ onOpenCart, onOpenAuth }) => {
           <button
             id="nav-login"
             onClick={() => onOpenAuth('login')}
-            className="flex items-center gap-2 rounded-xl border border-orange-200 px-3 py-2 text-sm font-bold text-orange-700 hover:bg-orange-50"
+            className="premium-button-secondary text-sm font-semibold"
           >
             <LogIn size={17} />
             Log in
@@ -45,16 +51,18 @@ const Navbar = ({ onOpenCart, onOpenAuth }) => {
         <button
           id="nav-cart"
           onClick={onOpenCart}
-          className="relative rounded-xl bg-orange-600 p-2.5 text-white"
+          className="premium-button relative px-4 py-2.5 text-sm"
           aria-label={`Open cart, ${itemCount} items`}
         >
-          <ShoppingCart size={21} />
+          <ShoppingCart size={18} />
+          <span className="hidden sm:inline">Cart</span>
           {itemCount > 0 && (
-            <span className="absolute -right-2 -top-2 grid h-5 w-5 place-items-center rounded-full bg-red-500 text-xs font-bold">
+            <span className="absolute -right-1 -top-1 grid h-5 w-5 place-items-center rounded-full bg-black text-xs font-bold text-amber-300 shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
               {itemCount}
             </span>
           )}
         </button>
+      </div>
       </div>
     </nav>
   );

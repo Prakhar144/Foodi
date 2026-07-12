@@ -19,12 +19,12 @@ const AuthModal = ({ mode, onClose, onSwitchMode }) => {
   return (
     <div
       id="auth-overlay"
-      className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4"
+      className="fixed inset-0 z-50 grid place-items-center bg-black/72 p-4 backdrop-blur-md"
       onClick={(e) => e.target.id === 'auth-overlay' && onClose()}
     >
       <form
         onSubmit={handleSubmit}
-        className="relative w-full max-w-md rounded-2xl bg-white p-7 shadow-2xl"
+        className="glass-panel relative w-full max-w-md rounded-[28px] p-7 text-white shadow-[0_30px_90px_rgba(0,0,0,0.5)]"
         noValidate
       >
         <button
@@ -32,22 +32,24 @@ const AuthModal = ({ mode, onClose, onSwitchMode }) => {
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute right-5 top-5 text-gray-500 hover:text-gray-800"
+          className="absolute right-5 top-5 rounded-xl border border-white/8 bg-white/5 p-2 text-white/70 transition hover:bg-white/10 hover:text-white"
         >
           <X />
         </button>
 
-        <UserRound className="mb-4 text-orange-600" size={30} />
-        <h2 className="text-2xl font-black">
+        <div className="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-amber-300 via-amber-500 to-orange-500 text-black shadow-[0_18px_30px_rgba(212,175,55,0.25)]">
+          <UserRound size={28} />
+        </div>
+        <h2 className="font-['Sora'] text-3xl font-bold tracking-tight">
           {isSignup ? 'Create your account' : 'Welcome back'}
         </h2>
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="mt-2 text-sm leading-6 text-white/55">
           {isSignup
             ? 'Sign up to place and pay for demo orders.'
             : 'Log in to place and pay for your order.'}
         </p>
 
-        <div className="mt-5 space-y-3">
+        <div className="mt-6 space-y-3">
           {isSignup && (
             <input
               id="auth-name"
@@ -57,7 +59,7 @@ const AuthModal = ({ mode, onClose, onSwitchMode }) => {
               value={form.name}
               onChange={handleChange}
               placeholder="Your name"
-              className="w-full rounded-xl border p-3 outline-none focus:border-orange-500"
+              className="premium-input"
             />
           )}
           <input
@@ -68,7 +70,7 @@ const AuthModal = ({ mode, onClose, onSwitchMode }) => {
             value={form.email}
             onChange={handleChange}
             placeholder="Email address"
-            className="w-full rounded-xl border p-3 outline-none focus:border-orange-500"
+            className="premium-input"
           />
           <input
             id="auth-password"
@@ -79,7 +81,7 @@ const AuthModal = ({ mode, onClose, onSwitchMode }) => {
             value={form.password}
             onChange={handleChange}
             placeholder="Password (6+ characters)"
-            className="w-full rounded-xl border p-3 outline-none focus:border-orange-500"
+            className="premium-input"
           />
         </div>
 
@@ -87,18 +89,18 @@ const AuthModal = ({ mode, onClose, onSwitchMode }) => {
           id="auth-submit"
           type="submit"
           disabled={isSubmitting}
-          className="mt-5 w-full rounded-xl bg-orange-600 py-3 font-bold text-white disabled:opacity-70"
+          className="premium-button mt-5 w-full py-3.5"
         >
           {isSubmitting ? 'Please wait…' : isSignup ? 'Sign up' : 'Log in'}
         </button>
 
-        <p className="mt-4 text-center text-sm text-gray-600">
+        <p className="mt-4 text-center text-sm text-white/55">
           {isSignup ? 'Already have an account?' : 'New to Foodie?'}{' '}
           <button
             id="auth-switch"
             type="button"
             onClick={() => onSwitchMode(isSignup ? 'login' : 'signup')}
-            className="font-bold text-orange-600 hover:underline"
+            className="font-semibold text-amber-200 hover:text-amber-100 hover:underline"
           >
             {isSignup ? 'Log in' : 'Sign up'}
           </button>
