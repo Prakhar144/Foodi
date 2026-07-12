@@ -8,8 +8,8 @@
   },
   "scripts": {
     "build": "node -e \"console.log('No backend build required')\"",
-    "dev": "node --env-file-if-exists=.env --watch server.js",
-    "start": "node --env-file-if-exists=.env server.js"
+    "dev": "node --watch server.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
